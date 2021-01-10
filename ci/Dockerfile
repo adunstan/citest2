@@ -3,11 +3,13 @@
 # * Configure Docker to use disks larger than the default 20 GB.
 FROM cirrusci/windowsservercore:2019
 
-RUN powershell -NoLogo -NoProfile -Command \
+SHELL ["powershell", "-NoLogo", "-NoProfile", "-Command"]
+
+RUN \
     choco feature disable -n=usePackageExitCodes ; \
 	choco install -y --no-progress --version=1.0.0 visualstudio2019-workload-vctools --install-args="--add Microsoft.VisualStudio.Component.VC.140 --add Microsoft.VisualStudio.Component.VC.v141.x86.x64 --add Microsoft.VisualStudio.Component.VC.CLI.Support"
 
-RUN powershell -NoLogo -NoProfile -Command \
+RUN \
     choco install -y --no-progress strawberryperl ; \
 	choco install -y --no-progress winflexbison diffutils ; \
     Rename-Item -Path c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe ; \
