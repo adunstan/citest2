@@ -11,8 +11,9 @@ RUN \
     choco feature disable -n=usePackageExitCodes ; \
 	choco install -y --no-progress --version=16.8.3.0 visualstudio2019buildtools
 
+COPY ci/inst-tools.bat .
 RUN \
-	cmd /c C:\Windows\TEMP\cirrus-ci-build\ci\inst-tools.bat
+	cmd /c .\inst-tools.bat
 
 RUN \
     choco install -y --no-progress strawberryperl ; \
