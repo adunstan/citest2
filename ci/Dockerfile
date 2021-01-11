@@ -5,9 +5,12 @@ FROM cirrusci/windowsservercore:2019
 
 SHELL ["powershell", "-NoLogo", "-NoProfile", "-Command"]
 
+
 RUN \
     choco feature disable -n=usePackageExitCodes ; \
-	choco install -y --no-progress --version=16.8.3.0 visualstudio2019buildtools ; \
+	choco install -y --no-progress --version=16.8.3.0 visualstudio2019buildtools
+
+RUN \
 	choco install -y --no-progress --version=1.0.0 visualstudio2019-workload-vctools  --install-args="--add Microsoft.VisualStudio.Component.VC.CLI.Support"
 
 RUN \
