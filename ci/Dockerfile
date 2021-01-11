@@ -8,12 +8,12 @@ SHELL ["powershell", "-NoLogo", "-NoProfile", "-Command"]
 
 RUN \
 	pwd ; \
-	dir /s /b ; \
+	ls -recurse ; \
     choco feature disable -n=usePackageExitCodes ; \
 	choco install -y --no-progress --version=16.8.3.0 visualstudio2019buildtools
 
 RUN \
-	choco install -y --no-progress --version=1.0.0 visualstudio2019-workload-vctools  --install-args="--add Microsoft.VisualStudio.Component.VC.CLI.Support"
+	choco install -y --no-progress --version=1.0.0 visualstudio2019-workload-vctools  --parameters=" --add Microsoft.VisualStudio.Component.VC.CLI.Support "
 
 RUN \
     choco install -y --no-progress strawberryperl ; \
