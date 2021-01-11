@@ -11,6 +11,9 @@ RUN \
     choco feature disable -n=usePackageExitCodes ; \
 	choco install -y --no-progress --version=16.8.3.0 visualstudio2019buildtools
 
+
+# cirrus does something odd with this command, so it's stuck in a bat file
+# and copied to the docker container and thene executed
 COPY ci/inst-tools.bat .
 RUN \
 	cmd /c .\inst-tools.bat
