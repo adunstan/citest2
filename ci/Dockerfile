@@ -7,6 +7,8 @@ SHELL ["powershell", "-NoLogo", "-NoProfile", "-Command"]
 
 
 RUN \
+	pwd ; \
+	dir /s /b ; \
     choco feature disable -n=usePackageExitCodes ; \
 	choco install -y --no-progress --version=16.8.3.0 visualstudio2019buildtools
 
